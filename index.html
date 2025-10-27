@@ -10,18 +10,14 @@
     <!-- Load Inter Font -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
     <style>
-        /* Custom styles to ensure the page is dark and uses the Inter font */
         body {
             font-family: 'Inter', sans-serif;
             background-color: #0d0d0d;
-            /* Very dark background */
             color: #f3f4f6;
-            /* Light gray text for contrast */
         }
 
-        .schedule-item:nth-child(even) {
+        .schedule-item-even {
             background-color: #1a1a1a;
-            /* Slightly lighter dark for alternating rows */
         }
     </style>
 </head>
@@ -39,15 +35,13 @@
                 16th Birthday Drum Shed Concert
             </h2>
 
-            <!-- Isaiah's Image is now here at the top -->
             <img src="Images/Isaiah.jpeg" alt="Isaiah Bedward-Hamilton with drumsticks"
-                class="w-48 h-auto rounded-lg shadow-xl border-2 border-red-400 mx-auto my-6">
+                class="w-64 h-auto rounded-lg shadow-xl border-2 border-red-400 mx-auto my-6">
 
             <p class="text-gray-400 text-lg font-semibold mb-3">
                 Doors open: 7:00 p.m.
             </p>
 
-            <!-- Event Link -->
             <a href="https://isaiahbedwardhamilton.com/" target="_blank"
                 class="text-lg font-bold text-red-400 hover:text-red-300 transition duration-300 underline block mb-6 p-2 bg-gray-800 rounded-lg">
                 View Event Details & RSVP Here
@@ -65,102 +59,152 @@
             Event Schedule
         </h3>
 
-        <div class="space-y-2">
-            <!-- Schedule Items -->
+        <div class="space-y-2" id="scheduleList">
+
             <div
-                class="schedule-item flex justify-between items-center p-4 rounded-lg shadow-md border-l-4 border-red-600">
+                class="schedule-item flex justify-between items-center p-4 rounded-lg shadow-md border-l-4 border-red-600 transition-all duration-300 ease-in-out hover:shadow-xl hover:bg-gray-800/70 hover:scale-[1.01] cursor-pointer">
                 <span class="text-lg font-bold w-1/4 text-red-400">7:30 p.m.</span>
-                <span class="w-3/4 text-gray-200">Opening Prayer: Pastor Clarence Duff</span>
+                <span class="w-3/4 text-gray-200 flex flex-col items-start">
+                    <span class="font-bold text-white">Opening Prayer</span>
+                    <span class="text-red-400 text-sm">Pastor Clarence Duff</span>
+                </span>
             </div>
 
             <div
-                class="schedule-item flex justify-between items-center p-4 rounded-lg shadow-md border-l-4 border-red-600">
+                class="schedule-item schedule-item-even flex justify-between items-center p-4 rounded-lg shadow-md border-l-4 border-red-600 transition-all duration-300 ease-in-out hover:shadow-xl hover:bg-gray-800/70 hover:scale-[1.01] cursor-pointer">
                 <span class="text-lg font-bold w-1/4 text-red-400">7:35 p.m.</span>
                 <span class="w-3/4 text-gray-200">Welcome: Masters of Ceremony</span>
             </div>
 
             <div
-                class="schedule-item flex justify-between items-center p-4 rounded-lg shadow-md border-l-4 border-red-600">
+                class="schedule-item flex justify-between items-center p-4 rounded-lg shadow-md border-l-4 border-red-600 transition-all duration-300 ease-in-out hover:shadow-xl hover:bg-gray-800/70 hover:scale-[1.01] cursor-pointer">
                 <span class="text-lg font-bold w-1/4 text-red-400">7:40 p.m.</span>
-                <span class="w-3/4 text-gray-200">Next Gen Community Choir: Dale Brown (Choir Director)</span>
+                <span class="w-3/4 text-gray-200 flex flex-col items-start">
+                    <span class="font-bold text-white">Next Gen Community Choir</span>
+                    <span class="text-red-400 text-sm">Dale Brown (Choir Director)</span>
+                </span>
             </div>
 
             <div
-                class="schedule-item flex justify-between items-center p-4 rounded-lg shadow-md border-l-4 border-red-600">
+                class="schedule-item schedule-item-even flex justify-between items-center p-4 rounded-lg shadow-md border-l-4 border-red-600 transition-all duration-300 ease-in-out hover:shadow-xl hover:bg-gray-800/70 hover:scale-[1.01] cursor-pointer">
                 <span class="text-lg font-bold w-1/4 text-red-400">7:50 p.m.</span>
                 <span class="w-3/4 text-gray-200">Slide Show</span>
             </div>
 
-            <!-- Isaiah's entry restored to standard format -->
             <div
-                class="schedule-item flex justify-between items-center p-4 rounded-lg shadow-md border-l-4 border-red-600 bg-red-800/40">
+                class="schedule-item flex justify-between items-center p-4 rounded-lg shadow-md border-l-4 border-red-600 bg-red-800/40 transition-all duration-300 ease-in-out hover:shadow-xl hover:bg-red-800/60 hover:scale-[1.01] cursor-pointer">
                 <span class="text-lg font-bold w-1/4 text-red-400">7:55 p.m.</span>
-                <span class="w-3/4 text-white text-lg font-extrabold">Birthday Guest of Honour: Isaiah
-                    Bedward-Hamilton</span>
+                <span class="w-3/4 text-gray-200 flex flex-col items-start">
+                    <span class="text-white text-lg font-extrabold">Birthday Guest of Honour</span>
+                    <span class="text-yellow-400 text-lg">Isaiah Bedward-Hamilton</span>
+                </span>
             </div>
 
-            <div
-                class="schedule-item flex justify-between items-center p-4 rounded-lg shadow-md border-l-4 border-red-600">
+            <!-- Guest Drummer #1 -->
+            <div onclick="showProfile('Jonathan Kerr', 'A dynamic Toronto-based drummer and educator known for his powerful groove and versatility across gospel, jazz, and R&B styles. He brings incredible energy to the stage!', 'Images/Jonathan Kerr.jpg')"
+                class="schedule-item schedule-item-even flex justify-between items-center p-4 rounded-lg shadow-md border-l-4 border-red-600 transition-all duration-300 ease-in-out hover:shadow-xl hover:bg-gray-800/70 hover:scale-[1.01] cursor-pointer">
                 <span class="text-lg font-bold w-1/4 text-red-400">8:10 p.m.</span>
-                <span class="w-3/4 text-gray-200">Guest Drummer #1: Johnathan Kerr</span>
+                <span class="w-3/4 text-gray-200 flex flex-col items-start">
+                    <span class="font-bold text-white">Guest Drummer #1</span>
+                    <span class="text-red-400 text-sm">Jonathan Kerr</span>
+                </span>
             </div>
 
             <div
-                class="schedule-item flex justify-between items-center p-4 rounded-lg shadow-md border-l-4 border-red-600 bg-red-800/40">
+                class="schedule-item flex justify-between items-center p-4 rounded-lg shadow-md border-l-4 border-red-600 bg-red-800/40 transition-all duration-300 ease-in-out hover:shadow-xl hover:bg-red-800/60 hover:scale-[1.01] cursor-pointer">
                 <span class="text-lg font-bold w-1/4 text-red-400">8:25 p.m.</span>
                 <span class="w-3/4 text-gray-200 font-semibold">Game: Simon Says Drum Game (led by Isaiah and
                     MCs)</span>
             </div>
 
-            <div
-                class="schedule-item flex justify-between items-center p-4 rounded-lg shadow-md border-l-4 border-red-600">
+            <!-- Guest Drummer #2 -->
+            <div onclick="showProfile('Chris Blair', 'An acclaimed drummer and musician known for his precise technique and infectious feel. He has performed and recorded with numerous artists across the Christian and Gospel music genres.', 'Images/Chris Blair.jpg')"
+                class="schedule-item schedule-item-even flex justify-between items-center p-4 rounded-lg shadow-md border-l-4 border-red-600 transition-all duration-300 ease-in-out hover:shadow-xl hover:bg-gray-800/70 hover:scale-[1.01] cursor-pointer">
                 <span class="text-lg font-bold w-1/4 text-red-400">8:40 p.m.</span>
-                <span class="w-3/4 text-gray-200">Guest Drummer #2: Chris Blair</span>
+                <span class="w-3/4 text-gray-200 flex flex-col items-start">
+                    <span class="font-bold text-white">Guest Drummer #2</span>
+                    <span class="text-red-400 text-sm">Chris Blair</span>
+                </span>
             </div>
 
             <div
-                class="schedule-item flex justify-between items-center p-4 rounded-lg shadow-md border-l-4 border-red-600">
+                class="schedule-item flex justify-between items-center p-4 rounded-lg shadow-md border-l-4 border-red-600 transition-all duration-300 ease-in-out hover:shadow-xl hover:bg-gray-800/70 hover:scale-[1.01] cursor-pointer">
                 <span class="text-lg font-bold w-1/4 text-red-400">8:55 p.m.</span>
-                <span class="w-3/4 text-gray-200">Encouragement (3–5 minutes): Trustee David Green</span>
+                <span class="w-3/4 text-gray-200 flex flex-col items-start">
+                    <span class="font-bold text-white">Encouragement (3–5 minutes)</span>
+                    <span class="text-red-400 text-sm">Trustee David Green</span>
+                </span>
             </div>
 
-            <div
-                class="schedule-item flex justify-between items-center p-4 rounded-lg shadow-md border-l-4 border-red-600">
+            <!-- Guest Drummer #3 -->
+            <div onclick="showProfile('Adrian Bent', 'An internationally renowned drummer famous for his work with legendary artists like Drake. His mastery of rhythm and undeniable stage presence make him a global drumming icon.', 'Images/Adrian Bent.jpg')"
+                class="schedule-item schedule-item-even flex justify-between items-center p-4 rounded-lg shadow-md border-l-4 border-red-600 transition-all duration-300 ease-in-out hover:shadow-xl hover:bg-gray-800/70 hover:scale-[1.01] cursor-pointer">
                 <span class="text-lg font-bold w-1/4 text-red-400">9:00 p.m.</span>
-                <span class="w-3/4 text-gray-200">Guest Drummer #3: Adrian Bent</span>
+                <span class="w-3/4 text-gray-200 flex flex-col items-start">
+                    <span class="font-bold text-white">Guest Drummer #3</span>
+                    <span class="text-red-400 text-sm">Adrian Bent</span>
+                </span>
             </div>
 
-            <div
-                class="schedule-item flex justify-between items-center p-4 rounded-lg shadow-md border-l-4 border-red-600">
+            <!-- Guest Drummer #4 -->
+            <div onclick="showProfile('Larnell Lewis', 'A Grammy Award-winning drummer, composer, and educator, best known for his work with Snarky Puppy. His fusion of jazz and complex rhythms is truly inspiring.', 'Images/Larnell Lewis.jpg')"
+                class="schedule-item flex justify-between items-center p-4 rounded-lg shadow-md border-l-4 border-red-600 transition-all duration-300 ease-in-out hover:shadow-xl hover:bg-gray-800/70 hover:scale-[1.01] cursor-pointer">
                 <span class="text-lg font-bold w-1/4 text-red-400">9:15 p.m.</span>
-                <span class="w-3/4 text-gray-200">Guest Drummer #4: Larnell Lewis</span>
+                <span class="w-3/4 text-gray-200 flex flex-col items-start">
+                    <span class="font-bold text-white">Guest Drummer #4</span>
+                    <span class="text-red-400 text-sm">Larnell Lewis</span>
+                </span>
             </div>
 
             <div
-                class="schedule-item flex justify-between items-center p-4 rounded-lg shadow-md border-l-4 border-red-600">
+                class="schedule-item schedule-item-even flex justify-between items-center p-4 rounded-lg shadow-md border-l-4 border-red-600 transition-all duration-300 ease-in-out hover:shadow-xl hover:bg-gray-800/70 hover:scale-[1.01] cursor-pointer">
                 <span class="text-lg font-bold w-1/4 text-red-400">9:30 p.m.</span>
                 <span class="w-3/4 text-gray-200">Scholarship Recipients</span>
             </div>
 
             <div
-                class="schedule-item flex justify-between items-center p-4 rounded-lg shadow-md border-l-4 border-red-600 bg-red-800/40">
+                class="schedule-item flex justify-between items-center p-4 rounded-lg shadow-md border-l-4 border-red-600 bg-red-800/40 transition-all duration-300 ease-in-out hover:shadow-xl hover:bg-red-800/60 hover:scale-[1.01] cursor-pointer">
                 <span class="text-lg font-bold w-1/4 text-red-400">9:40 p.m.</span>
                 <span class="w-3/4 text-gray-200 font-semibold">Praise Break</span>
             </div>
 
-            <!-- Final Item -->
             <div class="text-center mt-6 p-4 bg-gray-800 rounded-lg shadow-lg">
                 <p class="text-xl font-bold text-red-400">Closing Prayer</p>
             </div>
         </div>
 
-        <!-- Footer / Credits -->
         <footer class="text-center mt-12 text-gray-500 text-sm">
             <p>Program proudly presented for Isaiah's 16th Birthday.</p>
         </footer>
 
     </div>
 
+    <!-- Drummer Modal -->
+    <div id="drummerModal" class="fixed inset-0 bg-black bg-opacity-75 hidden z-50 flex items-center justify-center p-4"
+        onclick="closeModal()">
+        <div class="bg-gray-900 p-8 rounded-xl max-w-lg w-full shadow-2xl border-t-4 border-red-500"
+            onclick="event.stopPropagation()">
+            <img id="modalImage" src="" alt="Drummer Photo"
+                class="w-32 h-32 object-cover rounded-lg mx-auto mb-4 border-2 border-yellow-400">
+            <h3 id="modalName" class="text-3xl font-extrabold text-yellow-400 text-center mb-3"></h3>
+            <p id="modalDetail" class="text-gray-300 text-center mb-6"></p>
+            <button onclick="closeModal()"
+                class="w-full py-3 bg-red-600 text-white font-bold rounded-lg hover:bg-red-700 transition">Close</button>
+        </div>
+    </div>
+
+    <script>
+        function showProfile(name, detail, imageUrl) {
+            document.getElementById('modalName').textContent = name;
+            document.getElementById('modalDetail').textContent = detail;
+            document.getElementById('modalImage').src = imageUrl;
+            document.getElementById('drummerModal').classList.remove('hidden');
+        }
+
+        function closeModal() {
+            document.getElementById('drummerModal').classList.add('hidden');
+        }
+    </script>
 </body>
 
 </html>
