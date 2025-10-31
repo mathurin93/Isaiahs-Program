@@ -366,12 +366,27 @@
 
 
             <!-- Closing Prayer (STATIC - NEW START TIME: 9:55 p.m.) -->
-            <div class="text-center mt-6 p-4 bg-red-800/40 rounded-lg shadow-lg reveal">
-                <p class="text-2xl font-bold text-red-400">Closing Prayer</p>
-                <!-- Updated text to reflect 9:55 p.m. start and ~10:00 p.m. conclusion -->
-                <p class="text-base text-gray-300 pt-1 font-semibold">Starts at 9:55 p.m. - Event concludes around 10:00
-                    p.m.</p>
+            <!-- Closing Prayer (Interactive - Pastor Dwayne Blair) -->
+            <div tabindex="0" onclick="showProfile(
+                    'Pastor Dwayne Blair',
+                    'Pastor Dwayne Blair has been married to his wife, Patricia, for over 20 years and together they have three children. A lifelong basketball fan and coach, Dwayne brings the same passion and teamwork to his faith. <br><br>He is a Certified Credit Professional and licensed insurance advisor with over two decades of ministry service. In 2023, he was ordained as a Youth Pastor at the Church of God Sabbath Keeping Ministries and continues to mentor and guide young people through the Redeemed Youth Ministry in the GTA.',
+                    'Images/Dwayne.jpeg'
+                )"
+                class="text-center mt-6 p-4 bg-red-800/40 rounded-lg shadow-lg reveal cursor-pointer hover:scale-[1.01] transition-transform duration-300 border-l-4 border-red-600 flex items-center justify-center space-x-3">
+            
+                <div>
+                    <p class="text-2xl font-bold text-red-400">Closing Prayer</p>
+                    <p class="text-base text-gray-300 pt-1 font-semibold">Pastor Dwayne Blair</p>
+                </div>
+            
+                <!-- White Arrow Icon -->
+                <svg class="w-5 h-5 text-white flex-shrink-0 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                </svg>
             </div>
+
+
         </div>
 
         <footer class="text-center mt-12 text-gray-500 text-sm reveal">
