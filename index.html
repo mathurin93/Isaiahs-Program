@@ -9,81 +9,116 @@
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
 
-    <!-- Inter Font -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet" />
+    <!-- Poppins Font (Modern & Elegant) -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&display=swap" rel="stylesheet" />
 
     <style>
-        /* ========== BASE BODY STYLES ========== */
-  body {
-    font-family: 'Inter', sans-serif;
-    background-color: #0d0d0d;
-    color: #f3f4f6;
-    scroll-behavior: smooth;
-    opacity: 0;
-    transition: opacity 900ms cubic-bezier(.2, .9, .2, 1);
-  }
+        /* Define Custom Black/White/Red Palette for Theme */
+        :root {
+            --color-body-bg: #000000;
+            /* Pure Black */
+            --color-card-bg: #141414;
+            /* Near Black for contrast */
+            --color-schedule-even: #242424;
+            /* Dark gray for schedule stripe */
+            --color-red-accent: #EF4444;
+            --color-red-dark: #991B1B;
+            --color-text-light: #F0F2F5;
+        }
 
-  body.loaded {
-    opacity: 1;
-  }
+        /* ========== BASE BODY STYLES (Poppins + Deep Black) ========== */
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--color-body-bg);
+            /* Now uses Black */
+            color: var(--color-text-light);
+            scroll-behavior: smooth;
+            opacity: 0;
+            transition: opacity 1000ms cubic-bezier(.2, .9, .2, 1);
+        }
 
-  .schedule-item-even {
-    background-color: #1a1a1a;
-  }
+        body.loaded {
+            opacity: 1;
+        }
 
-  /* ========== REVEAL ANIMATION (SCROLL ZOOM) ========== */
-  .reveal {
-    opacity: 0;
-    transform: translateY(18px) scale(0.95);
-    transition: opacity 700ms ease, transform 700ms ease;
-    will-change: opacity, transform;
-  }
+        .main-card-bg {
+            background-color: var(--color-card-bg);
+            /* Now uses Near Black */
+        }
 
-  .reveal.visible {
-    opacity: 1;
-    transform: translateY(0) scale(1);
-  }
+        .schedule-item-even {
+            background-color: var(--color-schedule-even);
+            /* Now uses Dark Gray */
+        }
 
-  /* ========== HOVER ZOOM + GLOW EFFECT ========== */
-  .schedule-item {
-    transition: transform 0.35s ease, box-shadow 0.35s ease;
-  }
+        /* ========== SUBTLE REVEAL ANIMATION (SCROLL) ========== */
+        .reveal {
+            opacity: 0;
+            transform: translateY(12px);
+            transition: opacity 800ms cubic-bezier(.2, .9, .2, 1), transform 800ms cubic-bezier(.2, .9, .2, 1);
+            will-change: opacity, transform;
+        }
 
-  .schedule-item:hover {
-    transform: scale(1.04);
-    box-shadow: 0 12px 30px rgba(255, 0, 0, 0.3);
-  }
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
 
-  /* ========== KEYBOARD FOCUS ========== */
-  .schedule-item:focus {
-    outline: 3px solid rgba(239, 68, 68, 0.35);
-    outline-offset: 3px;
-  }
+        /* ========== ELEGANT HOVER GLOW EFFECT (Maintains touch-friendly size) ========== */
+        .schedule-item {
+            transition: transform 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94), box-shadow 0.35s ease;
+            font-size: 1.125rem;
+            /* Slightly larger text for readability */
+        }
 
-  /* ========== MODAL IMAGE SIZING ========== */
-  #modalImage {
-    width: 128px;
-    height: 128px;
-    object-fit: cover;
-  }
+        .schedule-item:hover {
+            transform: scale(1.02);
+            /* Red glow with a subtle white halo */
+            box-shadow: 0 0 15px rgba(239, 68, 68, 0.4), 0 0 5px rgba(255, 255, 255, 0.1);
+        }
+
+        /* ========== KEYBOARD FOCUS ========== */
+        .schedule-item:focus {
+            outline: 3px solid rgba(239, 68, 68, 0.5);
+            outline-offset: 3px;
+        }
+
+        /* ========== MODAL IMAGE SIZING ========== */
+        #modalImage {
+            width: 128px;
+            height: 128px;
+            object-fit: cover;
+            /* Placeholder styles */
+            background-color: #334155;
+            display: block;
+            margin: 0 auto;
+            color: #ccc;
+            line-height: 128px;
+            text-align: center;
+            font-size: 0.8rem;
+            font-style: italic;
+        }
     </style>
 </head>
 
 <body class="min-h-screen p-4 sm:p-8">
 
-    <div class="max-w-4xl mx-auto py-8 px-4 sm:px-8 bg-gray-900 shadow-2xl rounded-2xl border-t-8 border-red-600 reveal"
+    <div class="max-w-4xl mx-auto py-8 px-4 sm:px-8 main-card-bg shadow-2xl rounded-2xl border-t-8 border-red-600 reveal"
         id="mainCard">
 
         <!-- Header Section -->
         <header class="text-center mb-10 reveal">
-            <h1 class="text-3xl sm:text-5xl font-extrabold tracking-tight text-red-500 mb-2">
+            <h1 class="text-4xl sm:text-6xl font-extrabold tracking-tight text-red-500 mb-2">
                 Isaiah Bedward-Hamilton's
             </h1>
-            <h2 class="text-xl sm:text-3xl font-light text-gray-100 mb-6 border-b-2 border-gray-700 pb-4 inline-block">
+            <h2 class="text-xl sm:text-3xl font-light text-gray-200 mb-6 border-b-2 border-gray-700 pb-4 inline-block">
                 16th Birthday Drum Shed Concert
             </h2>
 
-            <img src="Images/Isaiah.jpeg" alt="Isaiah Bedward-Hamilton with drumsticks"
+            <!-- Placeholder Image for Isaiah. Replace src with actual image path -->
+            <img src="Images/Isaiah.jpeg"
+                alt="Isaiah Bedward-Hamilton with drumsticks"
+                onerror="this.onerror=null; this.src='https://placehold.co/256x256/EF4444/FFFFFF?text=Isaiah';"
                 class="w-64 h-auto rounded-lg shadow-xl border-2 border-red-400 mx-auto my-6 reveal">
 
             <p class="text-gray-400 text-lg font-semibold mb-3 reveal">
@@ -91,142 +126,255 @@
             </p>
 
             <a href="https://isaiahbedwardhamilton.com/" target="_blank"
-                class="text-lg font-bold text-red-400 hover:text-red-300 transition duration-300 underline block mb-6 p-2 bg-gray-800 rounded-lg reveal">
+                class="text-lg font-bold text-red-400 hover:text-red-300 transition duration-300 underline block mb-6 p-2 bg-neutral-900 rounded-lg reveal">
                 View Event Details & RSVP Here
             </a>
         </header>
 
-        <!-- Masters of Ceremony -->
-        <div class="text-center mb-10 p-4 bg-gray-800 rounded-xl shadow-inner reveal">
-            <p class="text-lg font-bold text-gray-300 mb-1">Masters of Ceremony</p>
-            <p class="text-2xl font-extrabold text-white">Shawn Wallace & Antonette Whitley-Scott</p>
+        <!-- Masters of Ceremony (Clickable for Profile) -->
+        <div class="text-center mb-10 p-6 bg-neutral-900 rounded-xl shadow-inner reveal">
+            <p class="text-lg font-bold text-gray-300 mb-2 tracking-wider">Masters of Ceremony</p>
+            <!-- NEW: Tap hint for mobile users -->
+            <p class="text-xs font-semibold text-red-400 mb-4">(Tap names for info)</p>
+            <div class="flex flex-col sm:flex-row justify-center items-center space-y-2 sm:space-y-0 sm:space-x-2">
+                <!-- Shawn Wallace - Font size reduced to text-2xl -->
+                <div tabindex="0"
+                    onclick="showProfile('Shawn Wallace', 'Co-MC for the evening.', 'Images/Shawn Wallace.jpeg')"
+                    class="cursor-pointer hover:text-red-400 transition-colors p-2 rounded-lg hover:bg-white/5">
+                    <p class="text-2xl font-extrabold text-white">Shawn Wallace</p>
+                </div>
+                <!-- Changed 'and' to '&' for a more concise look -->
+                <span class="text-2xl font-extrabold text-white hidden sm:block">&</span>
+                <!-- Antonette Whitley-Scott - Font size reduced to text-2xl -->
+                <div tabindex="0"
+                    onclick="showProfile('Antonette Whitley-Scott', 'Co-MC for the evening.', 'Images/Antonette Whitley Scott.jpeg')"
+                    class="cursor-pointer hover:text-red-400 transition-colors p-2 rounded-lg hover:bg-white/5">
+                    <p class="text-2xl font-extrabold text-white">Antonette Whitley-Scott</p>
+                </div>
+            </div>
         </div>
 
         <!-- Event Schedule -->
-        <h3 class="text-3xl font-bold text-center text-red-500 mb-6 reveal">
+        <h3 class="text-4xl font-extrabold text-center text-red-500 mb-6 reveal">
             Event Schedule
         </h3>
 
-        <div class="space-y-2" id="scheduleList">
+        <div class="space-y-3" id="scheduleList">
 
+            <!-- Opening Prayer - Pastor Duff (INTERACTIVE: Added Icon) -->
             <div tabindex="0"
-                class="schedule-item reveal flex justify-between items-center p-4 rounded-lg shadow-md border-l-4 border-red-600 transition-all duration-300 ease-in-out hover:shadow-xl hover:bg-gray-800/70 hover:scale-[1.01] cursor-pointer">
-                <span class="text-lg font-bold w-1/4 text-red-400">7:30 p.m.</span>
-                <span class="w-3/4 text-gray-200 flex flex-col items-start">
-                    <span class="font-bold text-white">Opening Prayer</span>
-                    <span class="text-red-400 text-sm">Pastor Clarence Duff</span>
-                </span>
+                onclick="showProfile('Pastor Clarence Duff', 'Opening prayer for the event.', 'Images/Pastor Clarence Duff.jpg')"
+                class="schedule-item reveal flex justify-between items-center p-5 rounded-xl shadow-lg border-l-4 border-red-600 bg-white/5 transition-all duration-300 ease-in-out hover:scale-[1.01] cursor-pointer">
+                <span class="text-xl font-extrabold w-1/4 text-red-400">7:30 p.m.</span>
+                <!-- Interactive content wrapper -->
+                <div class="w-3/4 flex justify-between items-center">
+                    <span class="text-white flex flex-col items-start">
+                        <span class="font-semibold text-white">Opening Prayer</span>
+                        <span class="text-red-400 text-base">Pastor Clarence Duff</span>
+                    </span>
+                    <!-- Icon for Interactivity -->
+                    <svg class="w-5 h-5 text-red-500 flex-shrink-0 ml-2" fill="none" stroke="currentColor"
+                        viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                    </svg>
+                </div>
             </div>
 
+            <!-- Welcome (STATIC) -->
             <div tabindex="0"
-                class="schedule-item schedule-item-even reveal flex justify-between items-center p-4 rounded-lg shadow-md border-l-4 border-red-600 transition-all duration-300 ease-in-out hover:shadow-xl hover:bg-gray-800/70 hover:scale-[1.01] cursor-pointer">
-                <span class="text-lg font-bold w-1/4 text-red-400">7:35 p.m.</span>
-                <span class="w-3/4 text-gray-200">Welcome: Masters of Ceremony</span>
+                class="schedule-item schedule-item-even reveal flex justify-between items-center p-5 rounded-xl shadow-lg border-l-4 border-red-600 transition-all duration-300 ease-in-out hover:scale-[1.01] cursor-pointer">
+                <span class="text-xl font-extrabold w-1/4 text-red-400">7:35 p.m.</span>
+                <span class="w-3/4 text-white font-medium">Welcome: Masters of Ceremony</span>
             </div>
 
+            <!-- Next Gen Community Choir (INTERACTIVE: Added Icon) -->
             <div tabindex="0"
-                class="schedule-item reveal flex justify-between items-center p-4 rounded-lg shadow-md border-l-4 border-red-600 transition-all duration-300 ease-in-out hover:shadow-xl hover:bg-gray-800/70 hover:scale-[1.01] cursor-pointer">
-                <span class="text-lg font-bold w-1/4 text-red-400">7:40 p.m.</span>
-                <span class="w-3/4 text-gray-200 flex flex-col items-start">
-                    <span class="font-bold text-white">Next Gen Community Choir</span>
-                    <span class="text-red-400 text-sm">Dale Brown (Choir Director)</span>
-                </span>
+                onclick="showProfile('Next Gen Community Choir', 'A vibrant ensemble dedicated to inspiring the next generation through powerful, uplifting music and community engagement.', 'Images/Choir.jpg')"
+                class="schedule-item reveal flex justify-between items-center p-5 rounded-xl shadow-lg border-l-4 border-red-600 bg-white/5 transition-all duration-300 ease-in-out hover:scale-[1.01] cursor-pointer">
+                <span class="text-xl font-extrabold w-1/4 text-red-400">7:40 p.m.</span>
+                <!-- Interactive content wrapper -->
+                <div class="w-3/4 flex justify-between items-center">
+                    <span class="text-white flex flex-col items-start">
+                        <span class="font-semibold text-white">Next Gen Community Choir</span>
+                        <span class="text-red-400 text-base">Dale Brown (Choir Director)</span>
+                    </span>
+                    <!-- Icon for Interactivity -->
+                    <svg class="w-5 h-5 text-red-500 flex-shrink-0 ml-2" fill="none" stroke="currentColor"
+                        viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                    </svg>
+                </div>
             </div>
 
+            <!-- Slide Show (STATIC) -->
             <div tabindex="0"
-                class="schedule-item schedule-item-even reveal flex justify-between items-center p-4 rounded-lg shadow-md border-l-4 border-red-600 transition-all duration-300 ease-in-out hover:shadow-xl hover:bg-gray-800/70 hover:scale-[1.01] cursor-pointer">
-                <span class="text-lg font-bold w-1/4 text-red-400">7:50 p.m.</span>
-                <span class="w-3/4 text-gray-200">Slide Show</span>
+                class="schedule-item schedule-item-even reveal flex justify-between items-center p-5 rounded-xl shadow-lg border-l-4 border-red-600 transition-all duration-300 ease-in-out hover:scale-[1.01] cursor-pointer">
+                <span class="text-xl font-extrabold w-1/4 text-red-400">7:50 p.m.</span>
+                <span class="w-3/4 text-white font-medium">Slide Show</span>
             </div>
 
+            <!-- Birthday Guest (STATIC) -->
             <div tabindex="0"
-                class="schedule-item reveal flex justify-between items-center p-4 rounded-lg shadow-md border-l-4 border-red-600 bg-red-800/40 transition-all duration-300 ease-in-out hover:shadow-xl hover:bg-red-800/60 hover:scale-[1.01] cursor-pointer">
-                <span class="text-lg font-bold w-1/4 text-red-400">7:55 p.m.</span>
-                <span class="w-3/4 text-gray-200 flex flex-col items-start">
-                    <span class="text-white text-lg font-extrabold">Birthday Guest of Honour</span>
+                class="schedule-item reveal flex justify-between items-center p-5 rounded-xl shadow-lg border-l-4 border-red-600 bg-red-800/40 transition-all duration-300 ease-in-out hover:scale-[1.01] cursor-pointer">
+                <span class="text-xl font-extrabold w-1/4 text-red-400">7:55 p.m.</span>
+                <span class="w-3/4 text-white flex flex-col items-start">
+                    <span class="text-white text-xl font-extrabold">Birthday Guest of Honour</span>
                     <span class="text-yellow-400 text-lg">Isaiah Bedward-Hamilton</span>
                 </span>
             </div>
 
-            <!-- Guest Drummer #1 -->
+            <!-- Guest Drummer #1 (INTERACTIVE: Added Icon) -->
             <div tabindex="0"
                 onclick="showProfile('Jonathan Kerr', 'A dynamic Toronto-based drummer and educator known for his powerful groove and versatility across gospel, jazz, and R&B styles. He brings incredible energy to the stage!', 'Images/Jonathan Kerr.jpg')"
-                class="schedule-item schedule-item-even reveal flex justify-between items-center p-4 rounded-lg shadow-md border-l-4 border-red-600 transition-all duration-300 ease-in-out hover:shadow-xl hover:bg-gray-800/70 hover:scale-[1.01] cursor-pointer">
-                <span class="text-lg font-bold w-1/4 text-red-400">8:10 p.m.</span>
-                <span class="w-3/4 text-gray-200 flex flex-col items-start">
-                    <span class="font-bold text-white">Guest Drummer #1</span>
-                    <span class="text-red-400 text-sm">Jonathan Kerr</span>
-                </span>
+                class="schedule-item schedule-item-even reveal flex justify-between items-center p-5 rounded-xl shadow-lg border-l-4 border-red-600 transition-all duration-300 ease-in-out hover:scale-[1.01] cursor-pointer">
+                <span class="text-xl font-extrabold w-1/4 text-red-400">8:10 p.m.</span>
+                <!-- Interactive content wrapper -->
+                <div class="w-3/4 flex justify-between items-center">
+                    <span class="text-white flex flex-col items-start">
+                        <span class="font-semibold text-white">Guest Drummer #1</span>
+                        <span class="text-red-400 text-base">Jonathan Kerr</span>
+                    </span>
+                    <!-- Icon for Interactivity -->
+                    <svg class="w-5 h-5 text-red-500 flex-shrink-0 ml-2" fill="none" stroke="currentColor"
+                        viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                    </svg>
+                </div>
             </div>
 
+            <!-- Game (STATIC) -->
             <div tabindex="0"
-                class="schedule-item reveal flex justify-between items-center p-4 rounded-lg shadow-md border-l-4 border-red-600 bg-red-800/40 transition-all duration-300 ease-in-out hover:shadow-xl hover:bg-red-800/60 hover:scale-[1.01] cursor-pointer">
-                <span class="text-lg font-bold w-1/4 text-red-400">8:25 p.m.</span>
-                <span class="w-3/4 text-gray-200 font-semibold">Game: Simon Says Drum Game (led by Isaiah and
+                class="schedule-item reveal flex justify-between items-center p-5 rounded-xl shadow-lg border-l-4 border-red-600 bg-red-800/40 transition-all duration-300 ease-in-out hover:scale-[1.01] cursor-pointer">
+                <span class="text-xl font-extrabold w-1/4 text-red-400">8:25 p.m.</span>
+                <span class="w-3/4 text-white font-semibold">Game: Simon Says Drum Game (led by Isaiah and
                     MCs)</span>
             </div>
 
-            <!-- Guest Drummer #2 -->
+            <!-- Guest Drummer #2 (INTERACTIVE: Added Icon) -->
             <div tabindex="0"
                 onclick="showProfile('Chris Blair', 'An acclaimed drummer and musician known for his precise technique and infectious feel. He has performed and recorded with numerous artists across the Christian and Gospel music genres.', 'Images/Chris Blair.jpg')"
-                class="schedule-item schedule-item-even reveal flex justify-between items-center p-4 rounded-lg shadow-md border-l-4 border-red-600 transition-all duration-300 ease-in-out hover:shadow-xl hover:bg-gray-800/70 hover:scale-[1.01] cursor-pointer">
-                <span class="text-lg font-bold w-1/4 text-red-400">8:40 p.m.</span>
-                <span class="w-3/4 text-gray-200 flex flex-col items-start">
-                    <span class="font-bold text-white">Guest Drummer #2</span>
-                    <span class="text-red-400 text-sm">Chris Blair</span>
-                </span>
+                class="schedule-item schedule-item-even reveal flex justify-between items-center p-5 rounded-xl shadow-lg border-l-4 border-red-600 transition-all duration-300 ease-in-out hover:scale-[1.01] cursor-pointer">
+                <span class="text-xl font-extrabold w-1/4 text-red-400">8:40 p.m.</span>
+                <!-- Interactive content wrapper -->
+                <div class="w-3/4 flex justify-between items-center">
+                    <span class="text-white flex flex-col items-start">
+                        <span class="font-semibold text-white">Guest Drummer #2</span>
+                        <span class="text-red-400 text-base">Chris Blair</span>
+                    </span>
+                    <!-- Icon for Interactivity -->
+                    <svg class="w-5 h-5 text-red-500 flex-shrink-0 ml-2" fill="none" stroke="currentColor"
+                        viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                    </svg>
+                </div>
             </div>
 
+            <!-- Trustee David Green (INTERACTIVE: Added Icon) -->
             <div tabindex="0"
-                class="schedule-item reveal flex justify-between items-center p-4 rounded-lg shadow-md border-l-4 border-red-600 transition-all duration-300 ease-in-out hover:shadow-xl hover:bg-gray-800/70 hover:scale-[1.01] cursor-pointer">
-                <span class="text-lg font-bold w-1/4 text-red-400">8:55 p.m.</span>
-                <span class="w-3/4 text-gray-200 flex flex-col items-start">
-                    <span class="font-bold text-white">Encouragement (3–5 minutes)</span>
-                    <span class="text-red-400 text-sm">Trustee David Green</span>
-                </span>
+                onclick="showProfile('Trustee David Green', 'Dr. David Green is a long-time Trustee for the Peel District School Board (11 years) and a Tribunal Adjudicator with the Ministry of Health. His community leadership spans roles such as former Chair of Planning and Accommodation for Peel District School Board, First Vice-President and Board Member of Brampton Safe City, and Vice-Chair of the Ontario Public School Association (Central West) for the past three years. He also serves on the United Way Black Advisory Council, the Peel Region Police Youth Committee, and the Peel Youth Violence Association board.    In addition, Dr. Green leads Free For All Outreach Ministry as Chair and is the Executive Director of the Free For All Community Services (FFACS), which provides scholarships and youth and adult programs to support those in need.', 'Images/David Green.jpeg')"
+                class="schedule-item reveal flex justify-between items-center p-5 rounded-xl shadow-lg border-l-4 border-red-600 bg-white/5 transition-all duration-300 ease-in-out hover:scale-[1.01] cursor-pointer">
+                <span class="text-xl font-extrabold w-1/4 text-red-400">8:55 p.m.</span>
+                <!-- Interactive content wrapper -->
+                <div class="w-3/4 flex justify-between items-center">
+                    <span class="text-white flex flex-col items-start">
+                        <span class="font-semibold text-white">Encouragement</span>
+                        <span class="text-red-400 text-base">Trustee David Green</span>
+                    </span>
+                    <!-- Icon for Interactivity -->
+                    <svg class="w-5 h-5 text-red-500 flex-shrink-0 ml-2" fill="none" stroke="currentColor"
+                        viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                    </svg>
+                </div>
             </div>
 
-            <!-- Guest Drummer #3 -->
+            <!-- INTERMISSION (15-minute buffer inserted here) -->
+            <div tabindex="0"
+                class="schedule-item schedule-item-even reveal flex justify-between items-center p-5 rounded-xl shadow-lg border-l-4 border-red-600 transition-all duration-300 ease-in-out hover:scale-[1.01] cursor-pointer">
+                <span class="text-xl font-extrabold w-1/4 text-red-400">9:00 p.m.</span>
+                <span class="w-3/4 text-white text-xl font-bold tracking-wider">Time Buffer (15
+                    mins)</span>
+            </div>
+
+            <!-- Guest Drummer #3 (TIME REMAINS 9:15 p.m.) -->
             <div tabindex="0"
                 onclick="showProfile('Adrian Bent', 'An internationally renowned drummer famous for his work with legendary artists like Drake. His mastery of rhythm and undeniable stage presence make him a global drumming icon.', 'Images/Adrian Bent.jpg')"
-                class="schedule-item schedule-item-even reveal flex justify-between items-center p-4 rounded-lg shadow-md border-l-4 border-red-600 transition-all duration-300 ease-in-out hover:shadow-xl hover:bg-gray-800/70 hover:scale-[1.01] cursor-pointer">
-                <span class="text-lg font-bold w-1/4 text-red-400">9:00 p.m.</span>
-                <span class="w-3/4 text-gray-200 flex flex-col items-start">
-                    <span class="font-bold text-white">Guest Drummer #3</span>
-                    <span class="text-red-400 text-sm">Adrian Bent</span>
-                </span>
+                class="schedule-item reveal flex justify-between items-center p-5 rounded-xl shadow-lg border-l-4 border-red-600 bg-white/5 transition-all duration-300 ease-in-out hover:scale-[1.01] cursor-pointer">
+                <span class="text-xl font-extrabold w-1/4 text-red-400">9:15 p.m.</span>
+                <!-- Interactive content wrapper -->
+                <div class="w-3/4 flex justify-between items-center">
+                    <span class="text-white flex flex-col items-start">
+                        <span class="font-semibold text-white">Guest Drummer #3</span>
+                        <span class="text-red-400 text-base">Adrian Bent</span>
+                    </span>
+                    <!-- Icon for Interactivity -->
+                    <svg class="w-5 h-5 text-red-500 flex-shrink-0 ml-2" fill="none" stroke="currentColor"
+                        viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                    </svg>
+                </div>
             </div>
 
-            <!-- Guest Drummer #4 -->
+            <!-- Guest Drummer #4 (TIME REMAINS 9:30 p.m. but now has only 10 minutes) -->
             <div tabindex="0"
                 onclick="showProfile('Larnell Lewis', 'A Grammy Award-winning drummer, composer, and educator, best known for his work with Snarky Puppy. His fusion of jazz and complex rhythms is truly inspiring.', 'Images/Larnell Lewis.jpg')"
-                class="schedule-item reveal flex justify-between items-center p-4 rounded-lg shadow-md border-l-4 border-red-600 transition-all duration-300 ease-in-out hover:shadow-xl hover:bg-gray-800/70 hover:scale-[1.01] cursor-pointer">
-                <span class="text-lg font-bold w-1/4 text-red-400">9:15 p.m.</span>
-                <span class="w-3/4 text-gray-200 flex flex-col items-start">
-                    <span class="font-bold text-white">Guest Drummer #4</span>
-                    <span class="text-red-400 text-sm">Larnell Lewis</span>
-                </span>
+                class="schedule-item schedule-item-even reveal flex justify-between items-center p-5 rounded-xl shadow-lg border-l-4 border-red-600 transition-all duration-300 ease-in-out hover:scale-[1.01] cursor-pointer">
+                <span class="text-xl font-extrabold w-1/4 text-red-400">9:30 p.m.</span>
+                <!-- Interactive content wrapper -->
+                <div class="w-3/4 flex justify-between items-center">
+                    <span class="text-white flex flex-col items-start">
+                        <!-- Added 10 min note -->
+                        <span class="font-semibold text-white">Guest Drummer #4</span>
+                        <span class="text-red-400 text-base">Larnell Lewis</span>
+                    </span>
+                    <!-- Icon for Interactivity -->
+                    <svg class="w-5 h-5 text-red-500 flex-shrink-0 ml-2" fill="none" stroke="currentColor"
+                        viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                    </svg>
+                </div>
             </div>
 
+            <!-- GUEST DRUMMER #5 & SCHOLARSHIP PRESENTATION (TIME SHIFTED to 9:40 p.m. and compressed to 5 min) -->
             <div tabindex="0"
-                class="schedule-item schedule-item-even reveal flex justify-between items-center p-4 rounded-lg shadow-md border-l-4 border-red-600 transition-all duration-300 ease-in-out hover:shadow-xl hover:bg-gray-800/70 hover:scale-[1.01] cursor-pointer">
-                <span class="text-lg font-bold w-1/4 text-red-400">9:30 p.m.</span>
-                <span class="w-3/4 text-gray-200">Scholarship Recipients</span>
+                onclick="showProfile('Roshane Wright', 'An exceptionally talented and versatile drummer known for his dynamic style and deep pocket. He has quickly become one of the most sought-after musicians in the gospel and R&B circuits. Roshane will perform a short feature immediately before the Scholarship Recipients Presentation.', 'Images/Roshane Wright.jpeg')"
+                class="schedule-item reveal flex justify-between items-center p-5 rounded-xl shadow-lg border-l-4 border-red-500 bg-white/5 transition-all duration-300 ease-in-out hover:scale-[1.01] cursor-pointer">
+                <!-- NEW TIME -->
+                <span class="text-xl font-extrabold w-1/4 text-red-400">9:40 p.m.</span>
+                <!-- Interactive content wrapper -->
+                <div class="w-3/4 flex justify-between items-center">
+                    <span class="text-white flex flex-col items-start space-y-1">
+                        <!-- Updated title to reflect compression -->
+                        <span class="font-bold text-white text-lg">Guest Drummer #5 & Scholarship</span>
+                        <span class="text-red-400 text-base">Roshane Wright</span>
+                    </span>
+                    <!-- Icon for Interactivity -->
+                    <svg class="w-5 h-5 text-red-500 flex-shrink-0 ml-2" fill="none" stroke="currentColor"
+                        viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                    </svg>
+                </div>
             </div>
 
+            <!-- Praise Break (NEW START TIME: 9:45 p.m.) -->
             <div tabindex="0"
-                class="schedule-item reveal flex justify-between items-center p-4 rounded-lg shadow-md border-l-4 border-red-600 bg-red-800/40 transition-all duration-300 ease-in-out hover:shadow-xl hover:bg-red-800/60 hover:scale-[1.01] cursor-pointer">
-                <span class="text-lg font-bold w-1/4 text-red-400">9:40 p.m.</span>
-                <span class="w-3/4 text-gray-200 font-semibold">Praise Break</span>
+                class="schedule-item reveal flex justify-between items-center p-5 rounded-xl shadow-lg border-l-4 border-red-600 bg-red-800/40 transition-all duration-300 ease-in-out hover:scale-[1.01] cursor-pointer">
+                <span class="text-xl font-extrabold w-1/4 text-red-400">9:45 p.m.</span>
+                <span class="w-3/4 text-white font-extrabold text-xl tracking-wider">Praise Break</span>
             </div>
 
-            <div class="text-center mt-6 p-4 bg-gray-800 rounded-lg shadow-lg reveal">
-                <p class="text-xl font-bold text-red-400">Closing Prayer</p>
+
+            <!-- Closing Prayer (STATIC - NEW START TIME: 9:55 p.m.) -->
+            <div class="text-center mt-6 p-4 bg-red-800/40 rounded-lg shadow-lg reveal">
+                <p class="text-2xl font-bold text-red-400">Closing Prayer</p>
+                <!-- Updated text to reflect 9:55 p.m. start and ~10:00 p.m. conclusion -->
+                <p class="text-base text-gray-300 pt-1 font-semibold">Starts at 9:55 p.m. - Event concludes around 10:00
+                    p.m.</p>
             </div>
         </div>
 
         <footer class="text-center mt-12 text-gray-500 text-sm reveal">
-            <p>Program proudly presented for Isaiah's 16th Birthday.</p>
+            <p>Program proudly presented for Isaiah's 16th Birthday.<br> By Matt Robinson </p>
         </footer>
 
     </div>
@@ -234,67 +382,76 @@
     <!-- Drummer Modal -->
     <div id="drummerModal" class="fixed inset-0 bg-black bg-opacity-75 hidden z-50 flex items-center justify-center p-4"
         onclick="closeModal()">
-        <div class="bg-gray-900 p-8 rounded-xl max-w-lg w-full shadow-2xl border-t-4 border-red-500"
+        <div class="main-card-bg p-8 rounded-xl max-w-lg w-full shadow-2xl border-t-4 border-red-500"
             onclick="event.stopPropagation()">
-            <img id="modalImage" src="" alt="Drummer Photo"
-                class="w-32 h-32 object-cover rounded-lg mx-auto mb-4 border-2 border-yellow-400">
+            <!-- Image with Placeholder Fallback -->
+            <img id="modalImage" src="" alt="Profile Photo"
+                onerror="this.onerror=null; this.src='https://placehold.co/128x128/EF4444/FFFFFF?text=Photo';"
+                class="rounded-lg mx-auto mb-4 border-2 border-yellow-400">
             <h3 id="modalName" class="text-3xl font-extrabold text-yellow-400 text-center mb-3"></h3>
-            <p id="modalDetail" class="text-gray-300 text-center mb-6"></p>
+            <p id="modalDetail" class="text-gray-300 text-center mb-6 text-base"></p>
             <button onclick="closeModal()"
                 class="w-full py-3 bg-red-600 text-white font-bold rounded-lg hover:bg-red-700 transition">Close</button>
         </div>
     </div>
 
     <script>
-          // ========== PAGE FADE-IN ========== //
-            window.addEventListener('load', () => {
-                document.body.classList.add('loaded');
-            });
+        // ========== PAGE FADE-IN ========== //
+        window.addEventListener('load', () => {
+            document.body.classList.add('loaded');
+        });
 
-            // ========== STAGGERED SCROLL REVEAL ANIMATION ========== //
-            const reveals = document.querySelectorAll('.reveal');
+        // ========== STAGGERED SCROLL REVEAL ANIMATION ========== //
+        const reveals = document.querySelectorAll('.reveal');
 
-            // Assign each reveal a unique index for staggered delays
-            reveals.forEach((el, i) => {
-                el.dataset.revealIndex = i;
-            });
+        // Assign each reveal a unique index for staggered delays
+        reveals.forEach((el, i) => {
+            el.dataset.revealIndex = i;
+        });
 
-            const observer = new IntersectionObserver((entries, obs) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        const idx = parseInt(entry.target.dataset.revealIndex || 0, 10);
-                        const delayMs = Math.min(400, idx * 60); // Slight stagger, capped at 400ms
-                        entry.target.style.transitionDelay = delayMs + 'ms';
-                        entry.target.classList.add('visible');
-                        obs.unobserve(entry.target);
-                    }
-                });
-            }, {
-                threshold: 0.16
-            });
-
-            reveals.forEach(el => observer.observe(el));
-
-            // ========== MODAL FUNCTIONS ========== //
-            function showProfile(name, detail, imageUrl) {
-                document.getElementById('modalName').textContent = name;
-                document.getElementById('modalDetail').textContent = detail;
-                document.getElementById('modalImage').src = imageUrl;
-                document.getElementById('drummerModal').classList.remove('hidden');
-                document.getElementById('drummerModal').querySelector('button').focus();
-            }
-
-            function closeModal() {
-                document.getElementById('drummerModal').classList.add('hidden');
-            }
-
-            // ESC key closes modal
-            window.addEventListener('keydown', (e) => {
-                if (e.key === 'Escape') {
-                    const modal = document.getElementById('drummerModal');
-                    if (!modal.classList.contains('hidden')) closeModal();
+        const observer = new IntersectionObserver((entries, obs) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const idx = parseInt(entry.target.dataset.revealIndex || 0, 10);
+                    // Subtle stagger delay
+                    const delayMs = Math.min(400, idx * 50);
+                    entry.target.style.transitionDelay = delayMs + 'ms';
+                    entry.target.classList.add('visible');
+                    obs.unobserve(entry.target);
                 }
             });
+        }, {
+            threshold: 0.1
+        });
+
+        reveals.forEach(el => observer.observe(el));
+
+        // ========== MODAL FUNCTIONS ========== //
+        function showProfile(name, detail, imageUrl) {
+            document.getElementById('modalName').textContent = name;
+            document.getElementById('modalDetail').textContent = detail;
+            // Set image source and provide a dynamic placeholder fallback
+            document.getElementById('modalImage').src = imageUrl;
+            document.getElementById('modalImage').onerror = function () {
+                this.onerror = null; // Prevent infinite loop if placeholder fails
+                this.src = `https://placehold.co/128x128/EF4444/FFFFFF?text=${name.split(' ')[0]}+Photo`;
+            };
+
+            document.getElementById('drummerModal').classList.remove('hidden');
+            document.getElementById('drummerModal').querySelector('button').focus();
+        }
+
+        function closeModal() {
+            document.getElementById('drummerModal').classList.add('hidden');
+        }
+
+        // ESC key closes modal
+        window.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                const modal = document.getElementById('drummerModal');
+                if (!modal.classList.contains('hidden')) closeModal();
+            }
+        });
     </script>
 </body>
 
