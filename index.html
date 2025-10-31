@@ -139,7 +139,7 @@
             <div class="flex flex-col sm:flex-row justify-center items-center space-y-2 sm:space-y-0 sm:space-x-2">
                 <!-- Shawn Wallace - Font size reduced to text-2xl -->
                 <div tabindex="0"
-                    onclick="showProfile('Shawn Wallace', 'Co-MC for the evening.', 'Images/Shawn Wallace.jpeg')"
+                    onclick="showProfile('Shawn Wallace', 'Co-MC for the evening. <br><br> Shawn, a seasoned emcee with over a decade of experience under his belt, often humbly says that hosting chose him, and he has been riding the wave ever since. With a warm smile and quick wit, he has brought joy and laughter to countless events, including weddings, birthdays, corporate gatherings, and anniversaries. Whether he is keeping the party started or ensuring the ceremony runs smoothly, Shawn is passion for hosting shines through. Recently making Canada his new home, Shawn is no stranger to the stage, and his experience is evident in every event he hosts, leaving a lasting impression on all who attend.','Images/Shawn Wallace.jpeg')"
                     class="cursor-pointer hover:text-red-400 transition-colors p-2 rounded-lg hover:bg-white/5">
                     <p class="text-2xl font-extrabold text-white">Shawn Wallace</p>
                 </div>
@@ -147,7 +147,7 @@
                 <span class="text-2xl font-extrabold text-white hidden sm:block">&</span>
                 <!-- Antonette Whitley-Scott - Font size reduced to text-2xl -->
                 <div tabindex="0"
-                    onclick="showProfile('Antonette Whitley-Scott', 'Co-MC for the evening.', 'Images/Antonette Whitley Scott.jpeg')"
+                    onclick="showProfile('Antonette Whitley-Scott', 'Co-MC for the evening. <br><br> For over 15 years, Antonette Whitley Scott has been the vibrant host behind countless events — from weddings, parties, and concerts to conferences and celebrations of every kind. A proud graduate of the University of the West Indies with a Master’s in Communication Studies and a Certificate in Events Management, Antonette brings both professionalism and personality to every stage she graces. Known for her pleasant personality, she delights in creating a stress-free and enjoyable atmosphere for everyone she encounters and at every hosting engagement. From start to finish, Antonette not only hosts but also customizes and executes each program with precision and heart, ensuring every event is truly unforgettable.', 'Images/Antonette Whitley Scott.jpeg')"
                     class="cursor-pointer hover:text-red-400 transition-colors p-2 rounded-lg hover:bg-white/5">
                     <p class="text-2xl font-extrabold text-white">Antonette Whitley-Scott</p>
                 </div>
@@ -163,7 +163,7 @@
 
             <!-- Opening Prayer - Pastor Duff (INTERACTIVE: Added Icon) -->
             <div tabindex="0"
-                onclick="showProfile('Pastor Clarence Duff', 'Opening prayer for the event.', 'Images/Pastor Clarence Duff.jpg')"
+                onclick="showProfile('Pastor Clarence Duff', 'Opening prayer for the event.', 'Images/Duff.jpeg')"
                 class="schedule-item reveal flex justify-between items-center p-5 rounded-xl shadow-lg border-l-4 border-red-600 bg-white/5 transition-all duration-300 ease-in-out hover:scale-[1.01] cursor-pointer">
                 <span class="text-xl font-extrabold w-1/4 text-red-400">7:30 p.m.</span>
                 <!-- Interactive content wrapper -->
@@ -271,7 +271,7 @@
 
             <!-- Trustee David Green (INTERACTIVE: Added Icon) -->
             <div tabindex="0"
-                onclick="showProfile('Trustee David Green', 'Dr. David Green is a long-time Trustee for the Peel District School Board (11 years) and a Tribunal Adjudicator with the Ministry of Health. His community leadership spans roles such as former Chair of Planning and Accommodation for Peel District School Board, First Vice-President and Board Member of Brampton Safe City, and Vice-Chair of the Ontario Public School Association (Central West) for the past three years. He also serves on the United Way Black Advisory Council, the Peel Region Police Youth Committee, and the Peel Youth Violence Association board.    In addition, Dr. Green leads Free For All Outreach Ministry as Chair and is the Executive Director of the Free For All Community Services (FFACS), which provides scholarships and youth and adult programs to support those in need.', 'Images/David Green.jpeg')"
+                onclick="showProfile('Trustee David Green', 'Dr. David Green is a long-time Trustee for the Peel District School Board (11 years) and a Tribunal Adjudicator with the Ministry of Health. His community leadership spans roles such as former Chair of Planning and Accommodation for Peel District School Board, First Vice-President and Board Member of Brampton Safe City, and Vice-Chair of the Ontario Public School Association (Central West) for the past three years. He also serves on the United Way Black Advisory Council, the Peel Region Police Youth Committee, and the Peel Youth Violence Association board. <br><br> In addition, Dr. Green leads Free For All Outreach Ministry as Chair and is the Executive Director of the Free For All Community Services (FFACS), which provides scholarships and youth and adult programs to support those in need.', 'Images/David Green.jpeg')"
                 class="schedule-item reveal flex justify-between items-center p-5 rounded-xl shadow-lg border-l-4 border-red-600 bg-white/5 transition-all duration-300 ease-in-out hover:scale-[1.01] cursor-pointer">
                 <span class="text-xl font-extrabold w-1/4 text-red-400">8:55 p.m.</span>
                 <!-- Interactive content wrapper -->
@@ -427,23 +427,41 @@
         reveals.forEach(el => observer.observe(el));
 
         // ========== MODAL FUNCTIONS ========== //
+        // function showProfile(name, detail, imageUrl) {
+        //     document.getElementById('modalName').textContent = name;
+        //     document.getElementById('modalDetail').textContent = detail;
+        //     // Set image source and provide a dynamic placeholder fallback
+        //     document.getElementById('modalImage').src = imageUrl;
+        //     document.getElementById('modalImage').onerror = function () {
+        //         this.onerror = null; // Prevent infinite loop if placeholder fails
+        //         this.src = `https://placehold.co/128x128/EF4444/FFFFFF?text=${name.split(' ')[0]}+Photo`;
+        //     };
+
+        //     document.getElementById('drummerModal').classList.remove('hidden');
+        //     document.getElementById('drummerModal').querySelector('button').focus();
+        // }
+
+        // function closeModal() {
+        //     document.getElementById('drummerModal').classList.add('hidden');
+        // }
+
         function showProfile(name, detail, imageUrl) {
-            document.getElementById('modalName').textContent = name;
-            document.getElementById('modalDetail').textContent = detail;
-            // Set image source and provide a dynamic placeholder fallback
-            document.getElementById('modalImage').src = imageUrl;
-            document.getElementById('modalImage').onerror = function () {
-                this.onerror = null; // Prevent infinite loop if placeholder fails
-                this.src = `https://placehold.co/128x128/EF4444/FFFFFF?text=${name.split(' ')[0]}+Photo`;
-            };
+                document.getElementById('modalName').textContent = name;
+                document.getElementById('modalDetail').innerHTML = detail; // <-- use innerHTML
+                document.getElementById('modalImage').src = imageUrl;
+                document.getElementById('modalImage').onerror = function () {
+                    this.onerror = null;
+                    this.src = `https://placehold.co/128x128/EF4444/FFFFFF?text=${name.split(' ')[0]}+Photo`;
+                };
 
-            document.getElementById('drummerModal').classList.remove('hidden');
-            document.getElementById('drummerModal').querySelector('button').focus();
-        }
+                document.getElementById('drummerModal').classList.remove('hidden');
+                document.getElementById('drummerModal').querySelector('button').focus();
+            }
 
-        function closeModal() {
-            document.getElementById('drummerModal').classList.add('hidden');
-        }
+            function closeModal() {
+                   document.getElementById('drummerModal').classList.add('hidden');
+            }
+
 
         // ESC key closes modal
         window.addEventListener('keydown', (e) => {
