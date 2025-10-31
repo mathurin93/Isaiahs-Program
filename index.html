@@ -98,6 +98,20 @@
             font-size: 0.8rem;
             font-style: italic;
         }
+
+        /* ========== MODAL CONTENT SCROLL FIX for Mobile (NEW ADDITION) ========== */
+        #modalDetail {
+            /* Setting a maximum height so content can scroll if it exceeds the space */
+            max-height: 50vh;
+            /* Enable vertical scrolling when content overflows */
+            overflow-y: auto;
+            /* Adding internal padding for a clean look inside the scrollable area */
+            padding: 0 10px;
+            /* Ensure text is left-aligned for better reading of bios */
+            text-align: left;
+            /* Add space before the close button */
+            margin-bottom: 1rem;
+        }
     </style>
 </head>
 
@@ -116,8 +130,7 @@
             </h2>
 
             <!-- Placeholder Image for Isaiah. Replace src with actual image path -->
-            <img src="Images/Isaiah.jpeg"
-                alt="Isaiah Bedward-Hamilton with drumsticks"
+            <img src="Images/Isaiah.jpeg" alt="Isaiah Bedward-Hamilton with drumsticks"
                 onerror="this.onerror=null; this.src='https://placehold.co/256x256/EF4444/FFFFFF?text=Isaiah';"
                 class="w-64 h-auto rounded-lg shadow-xl border-2 border-red-400 mx-auto my-6 reveal">
 
@@ -137,20 +150,20 @@
             <!-- NEW: Tap hint for mobile users -->
             <p class="text-xs font-semibold text-red-400 mb-4">(Tap names for info)</p>
             <div class="flex flex-col sm:flex-row justify-center items-center space-y-2 sm:space-y-0 sm:space-x-2">
-                <!-- Shawn Wallace - Font size reduced to text-2xl -->
+                <!-- Shawn Wallace - text-wrap break-words ensures no horizontal overflow -->
                 <div tabindex="0"
                     onclick="showProfile('Shawn Wallace', 'Co-MC for the evening. <br><br> Shawn, a seasoned emcee with over a decade of experience under his belt, often humbly says that hosting chose him, and he has been riding the wave ever since. With a warm smile and quick wit, he has brought joy and laughter to countless events, including weddings, birthdays, corporate gatherings, and anniversaries. Whether he is keeping the party started or ensuring the ceremony runs smoothly, Shawn is passion for hosting shines through. Recently making Canada his new home, Shawn is no stranger to the stage, and his experience is evident in every event he hosts, leaving a lasting impression on all who attend.','Images/Shawn Wallace.jpeg')"
                     class="cursor-pointer hover:text-red-400 transition-colors p-2 rounded-lg hover:bg-white/5">
-                    <p class="text-2xl font-extrabold text-white">Shawn Wallace</p>
+                    <p class="text-2xl font-extrabold text-white text-wrap break-words">Shawn Wallace</p>
                 </div>
                 <!-- Changed 'and' to '&' for a more concise look -->
-            <span class="text-xl sm:text-2xl font-extrabold text-white">&</span>
+                <span class="text-xl sm:text-2xl font-extrabold text-white">&</span>
 
-                <!-- Antonette Whitley-Scott - Font size reduced to text-2xl -->
+                <!-- Antonette Whitley-Scott - text-wrap break-words ensures no horizontal overflow -->
                 <div tabindex="0"
                     onclick="showProfile('Antonette Whitley-Scott', 'Co-MC for the evening. <br><br> For over 15 years, Antonette Whitley Scott has been the vibrant host behind countless events — from weddings, parties, and concerts to conferences and celebrations of every kind. A proud graduate of the University of the West Indies with a Master’s in Communication Studies and a Certificate in Events Management, Antonette brings both professionalism and personality to every stage she graces. Known for her pleasant personality, she delights in creating a stress-free and enjoyable atmosphere for everyone she encounters and at every hosting engagement. From start to finish, Antonette not only hosts but also customizes and executes each program with precision and heart, ensuring every event is truly unforgettable.', 'Images/Antonette Whitley Scott.jpeg')"
                     class="cursor-pointer hover:text-red-400 transition-colors p-2 rounded-lg hover:bg-white/5">
-                    <p class="text-2xl font-extrabold text-white">Antonette Whitley-Scott</p>
+                    <p class="text-2xl font-extrabold text-white text-wrap break-words">Antonette Whitley-Scott</p>
                 </div>
             </div>
         </div>
@@ -162,16 +175,17 @@
 
         <div class="space-y-3" id="scheduleList">
 
-            <!-- Opening Prayer - Pastor Duff (INTERACTIVE: Added Icon) -->
+            <!-- Opening Prayer - Pastor Duff (RESPONSIVENESS: flex-shrink-0 + flex-1) -->
             <div tabindex="0"
                 onclick="showProfile('Pastor Clarence Duff', 'Opening prayer for the event.', 'Images/Duff.jpeg')"
                 class="schedule-item reveal flex justify-between items-center p-5 rounded-xl shadow-lg border-l-4 border-red-600 bg-white/5 transition-all duration-300 ease-in-out hover:scale-[1.01] cursor-pointer">
-                <span class="text-xl font-extrabold w-1/4 text-red-400">7:30 p.m.</span>
-                <!-- Interactive content wrapper -->
-                <div class="w-3/4 flex justify-between items-center">
+                <!-- Time: takes only necessary space -->
+                <span class="text-xl font-extrabold flex-shrink-0 mr-4 text-red-400">7:30 p.m.</span>
+                <!-- Content: takes remaining space and ensures internal wrapping -->
+                <div class="flex-1 min-w-0 flex justify-between items-center">
                     <span class="text-white flex flex-col items-start">
                         <span class="font-semibold text-white">Opening Prayer</span>
-                        <span class="text-red-400 text-base">Pastor Clarence Duff</span>
+                        <span class="text-red-400 text-base text-wrap break-words">Pastor Clarence Duff</span>
                     </span>
                     <!-- Icon for Interactivity -->
                     <svg class="w-5 h-5 text-red-500 flex-shrink-0 ml-2" fill="none" stroke="currentColor"
@@ -181,23 +195,26 @@
                 </div>
             </div>
 
-            <!-- Welcome (STATIC) -->
+            <!-- Welcome (STATIC - RESPONSIVENESS: flex-shrink-0 + flex-1) -->
             <div tabindex="0"
                 class="schedule-item schedule-item-even reveal flex justify-between items-center p-5 rounded-xl shadow-lg border-l-4 border-red-600 transition-all duration-300 ease-in-out hover:scale-[1.01] cursor-pointer">
-                <span class="text-xl font-extrabold w-1/4 text-red-400">7:35 p.m.</span>
-                <span class="w-3/4 text-white font-medium">Welcome: Masters of Ceremony</span>
+                <!-- Time: takes only necessary space -->
+                <span class="text-xl font-extrabold flex-shrink-0 mr-4 text-red-400">7:35 p.m.</span>
+                <!-- Content: takes remaining space and ensures internal wrapping -->
+                <span class="flex-1 min-w-0 text-white font-medium">Welcome: Masters of Ceremony</span>
             </div>
 
-            <!-- Next Gen Community Choir (INTERACTIVE: Added Icon) -->
+            <!-- Next Gen Community Choir (RESPONSIVENESS: flex-shrink-0 + flex-1) -->
             <div tabindex="0"
                 onclick="showProfile('Next Gen Community Choir', 'A vibrant ensemble dedicated to inspiring the next generation through powerful, uplifting music and community engagement.', 'Images/Choir.jpg')"
                 class="schedule-item reveal flex justify-between items-center p-5 rounded-xl shadow-lg border-l-4 border-red-600 bg-white/5 transition-all duration-300 ease-in-out hover:scale-[1.01] cursor-pointer">
-                <span class="text-xl font-extrabold w-1/4 text-red-400">7:40 p.m.</span>
-                <!-- Interactive content wrapper -->
-                <div class="w-3/4 flex justify-between items-center">
+                <!-- Time: takes only necessary space -->
+                <span class="text-xl font-extrabold flex-shrink-0 mr-4 text-red-400">7:40 p.m.</span>
+                <!-- Content: takes remaining space and ensures internal wrapping -->
+                <div class="flex-1 min-w-0 flex justify-between items-center">
                     <span class="text-white flex flex-col items-start">
                         <span class="font-semibold text-white">Next Gen Community Choir</span>
-                        <span class="text-red-400 text-base">Dale Brown (Choir Director)</span>
+                        <span class="text-red-400 text-base text-wrap break-words">Dale Brown (Choir Director)</span>
                     </span>
                     <!-- Icon for Interactivity -->
                     <svg class="w-5 h-5 text-red-500 flex-shrink-0 ml-2" fill="none" stroke="currentColor"
@@ -207,33 +224,38 @@
                 </div>
             </div>
 
-            <!-- Slide Show (STATIC) -->
+            <!-- Slide Show (STATIC - RESPONSIVENESS: flex-shrink-0 + flex-1) -->
             <div tabindex="0"
                 class="schedule-item schedule-item-even reveal flex justify-between items-center p-5 rounded-xl shadow-lg border-l-4 border-red-600 transition-all duration-300 ease-in-out hover:scale-[1.01] cursor-pointer">
-                <span class="text-xl font-extrabold w-1/4 text-red-400">7:50 p.m.</span>
-                <span class="w-3/4 text-white font-medium">Slide Show</span>
+                <!-- Time: takes only necessary space -->
+                <span class="text-xl font-extrabold flex-shrink-0 mr-4 text-red-400">7:50 p.m.</span>
+                <!-- Content: takes remaining space and ensures internal wrapping -->
+                <span class="flex-1 min-w-0 text-white font-medium">Slide Show</span>
             </div>
 
-            <!-- Birthday Guest (STATIC) -->
+            <!-- Birthday Guest (STATIC - RESPONSIVENESS: flex-shrink-0 + flex-1) -->
             <div tabindex="0"
                 class="schedule-item reveal flex justify-between items-center p-5 rounded-xl shadow-lg border-l-4 border-red-600 bg-red-800/40 transition-all duration-300 ease-in-out hover:scale-[1.01] cursor-pointer">
-                <span class="text-xl font-extrabold w-1/4 text-red-400">7:55 p.m.</span>
-                <span class="w-3/4 text-white flex flex-col items-start">
+                <!-- Time: takes only necessary space -->
+                <span class="text-xl font-extrabold flex-shrink-0 mr-4 text-red-400">7:55 p.m.</span>
+                <!-- Content: takes remaining space and ensures internal wrapping -->
+                <span class="flex-1 min-w-0 text-white flex flex-col items-start">
                     <span class="text-white text-xl font-extrabold">Birthday Guest of Honour</span>
-                    <span class="text-yellow-400 text-lg">Isaiah Bedward-Hamilton</span>
+                    <span class="text-yellow-400 text-lg text-wrap break-words">Isaiah Bedward-Hamilton</span>
                 </span>
             </div>
 
-            <!-- Guest Drummer #1 (INTERACTIVE: Added Icon) -->
+            <!-- Guest Drummer #1 (RESPONSIVENESS: flex-shrink-0 + flex-1) -->
             <div tabindex="0"
                 onclick="showProfile('Jonathan Kerr', 'A dynamic Toronto-based drummer and educator known for his powerful groove and versatility across gospel, jazz, and R&B styles. He brings incredible energy to the stage!', 'Images/Jonathan Kerr.jpg')"
                 class="schedule-item schedule-item-even reveal flex justify-between items-center p-5 rounded-xl shadow-lg border-l-4 border-red-600 transition-all duration-300 ease-in-out hover:scale-[1.01] cursor-pointer">
-                <span class="text-xl font-extrabold w-1/4 text-red-400">8:10 p.m.</span>
-                <!-- Interactive content wrapper -->
-                <div class="w-3/4 flex justify-between items-center">
+                <!-- Time: takes only necessary space -->
+                <span class="text-xl font-extrabold flex-shrink-0 mr-4 text-red-400">8:10 p.m.</span>
+                <!-- Content: takes remaining space and ensures internal wrapping -->
+                <div class="flex-1 min-w-0 flex justify-between items-center">
                     <span class="text-white flex flex-col items-start">
                         <span class="font-semibold text-white">Guest Drummer #1</span>
-                        <span class="text-red-400 text-base">Jonathan Kerr</span>
+                        <span class="text-red-400 text-base text-wrap break-words">Jonathan Kerr</span>
                     </span>
                     <!-- Icon for Interactivity -->
                     <svg class="w-5 h-5 text-red-500 flex-shrink-0 ml-2" fill="none" stroke="currentColor"
@@ -243,24 +265,28 @@
                 </div>
             </div>
 
-            <!-- Game (STATIC) -->
+            <!-- Game (STATIC - RESPONSIVENESS: flex-shrink-0 + flex-1) -->
             <div tabindex="0"
                 class="schedule-item reveal flex justify-between items-center p-5 rounded-xl shadow-lg border-l-4 border-red-600 bg-red-800/40 transition-all duration-300 ease-in-out hover:scale-[1.01] cursor-pointer">
-                <span class="text-xl font-extrabold w-1/4 text-red-400">8:25 p.m.</span>
-                <span class="w-3/4 text-white font-semibold">Game: Simon Says Drum Game (led by Isaiah and
+                <!-- Time: takes only necessary space -->
+                <span class="text-xl font-extrabold flex-shrink-0 mr-4 text-red-400">8:25 p.m.</span>
+                <!-- Content: takes remaining space and ensures internal wrapping -->
+                <span class="flex-1 min-w-0 text-white font-semibold text-wrap break-words">Game: Simon Says Drum Game
+                    (led by Isaiah and
                     MCs)</span>
             </div>
 
-            <!-- Guest Drummer #2 (INTERACTIVE: Added Icon) -->
+            <!-- Guest Drummer #2 (RESPONSIVENESS: flex-shrink-0 + flex-1) -->
             <div tabindex="0"
                 onclick="showProfile('Chris Blair', 'An acclaimed drummer and musician known for his precise technique and infectious feel. He has performed and recorded with numerous artists across the Christian and Gospel music genres.', 'Images/Chris Blair.jpg')"
                 class="schedule-item schedule-item-even reveal flex justify-between items-center p-5 rounded-xl shadow-lg border-l-4 border-red-600 transition-all duration-300 ease-in-out hover:scale-[1.01] cursor-pointer">
-                <span class="text-xl font-extrabold w-1/4 text-red-400">8:40 p.m.</span>
-                <!-- Interactive content wrapper -->
-                <div class="w-3/4 flex justify-between items-center">
+                <!-- Time: takes only necessary space -->
+                <span class="text-xl font-extrabold flex-shrink-0 mr-4 text-red-400">8:40 p.m.</span>
+                <!-- Content: takes remaining space and ensures internal wrapping -->
+                <div class="flex-1 min-w-0 flex justify-between items-center">
                     <span class="text-white flex flex-col items-start">
                         <span class="font-semibold text-white">Guest Drummer #2</span>
-                        <span class="text-red-400 text-base">Chris Blair</span>
+                        <span class="text-red-400 text-base text-wrap break-words">Chris Blair</span>
                     </span>
                     <!-- Icon for Interactivity -->
                     <svg class="w-5 h-5 text-red-500 flex-shrink-0 ml-2" fill="none" stroke="currentColor"
@@ -270,16 +296,17 @@
                 </div>
             </div>
 
-            <!-- Trustee David Green (INTERACTIVE: Added Icon) -->
+            <!-- Trustee David Green (RESPONSIVENESS: flex-shrink-0 + flex-1) -->
             <div tabindex="0"
                 onclick="showProfile('Trustee David Green', 'Dr. David Green is a long-time Trustee for the Peel District School Board (11 years) and a Tribunal Adjudicator with the Ministry of Health. His community leadership spans roles such as former Chair of Planning and Accommodation for Peel District School Board, First Vice-President and Board Member of Brampton Safe City, and Vice-Chair of the Ontario Public School Association (Central West) for the past three years. He also serves on the United Way Black Advisory Council, the Peel Region Police Youth Committee, and the Peel Youth Violence Association board. <br><br> In addition, Dr. Green leads Free For All Outreach Ministry as Chair and is the Executive Director of the Free For All Community Services (FFACS), which provides scholarships and youth and adult programs to support those in need.', 'Images/David Green.jpeg')"
                 class="schedule-item reveal flex justify-between items-center p-5 rounded-xl shadow-lg border-l-4 border-red-600 bg-white/5 transition-all duration-300 ease-in-out hover:scale-[1.01] cursor-pointer">
-                <span class="text-xl font-extrabold w-1/4 text-red-400">8:55 p.m.</span>
-                <!-- Interactive content wrapper -->
-                <div class="w-3/4 flex justify-between items-center">
+                <!-- Time: takes only necessary space -->
+                <span class="text-xl font-extrabold flex-shrink-0 mr-4 text-red-400">8:55 p.m.</span>
+                <!-- Content: takes remaining space and ensures internal wrapping -->
+                <div class="flex-1 min-w-0 flex justify-between items-center">
                     <span class="text-white flex flex-col items-start">
                         <span class="font-semibold text-white">Encouragement</span>
-                        <span class="text-red-400 text-base">Trustee David Green</span>
+                        <span class="text-red-400 text-base text-wrap break-words">Trustee David Green</span>
                     </span>
                     <!-- Icon for Interactivity -->
                     <svg class="w-5 h-5 text-red-500 flex-shrink-0 ml-2" fill="none" stroke="currentColor"
@@ -289,24 +316,27 @@
                 </div>
             </div>
 
-            <!-- INTERMISSION (15-minute buffer inserted here) -->
+            <!-- INTERMISSION (15-minute buffer inserted here - RESPONSIVENESS: flex-shrink-0 + flex-1) -->
             <div tabindex="0"
                 class="schedule-item schedule-item-even reveal flex justify-between items-center p-5 rounded-xl shadow-lg border-l-4 border-red-600 transition-all duration-300 ease-in-out hover:scale-[1.01] cursor-pointer">
-                <span class="text-xl font-extrabold w-1/4 text-red-400">9:00 p.m.</span>
-                <span class="w-3/4 text-white text-xl font-bold tracking-wider">Time Buffer (15
+                <!-- Time: takes only necessary space -->
+                <span class="text-xl font-extrabold flex-shrink-0 mr-4 text-red-400">9:00 p.m.</span>
+                <!-- Content: takes remaining space and ensures internal wrapping -->
+                <span class="flex-1 min-w-0 text-white text-xl font-bold tracking-wider">Time Buffer (15
                     mins)</span>
             </div>
 
-            <!-- Guest Drummer #3 (TIME REMAINS 9:15 p.m.) -->
+            <!-- Guest Drummer #3 (RESPONSIVENESS: flex-shrink-0 + flex-1) -->
             <div tabindex="0"
                 onclick="showProfile('Adrian Bent', 'An internationally renowned drummer famous for his work with legendary artists like Drake. His mastery of rhythm and undeniable stage presence make him a global drumming icon.', 'Images/Adrian Bent.jpg')"
                 class="schedule-item reveal flex justify-between items-center p-5 rounded-xl shadow-lg border-l-4 border-red-600 bg-white/5 transition-all duration-300 ease-in-out hover:scale-[1.01] cursor-pointer">
-                <span class="text-xl font-extrabold w-1/4 text-red-400">9:15 p.m.</span>
-                <!-- Interactive content wrapper -->
-                <div class="w-3/4 flex justify-between items-center">
+                <!-- Time: takes only necessary space -->
+                <span class="text-xl font-extrabold flex-shrink-0 mr-4 text-red-400">9:15 p.m.</span>
+                <!-- Content: takes remaining space and ensures internal wrapping -->
+                <div class="flex-1 min-w-0 flex justify-between items-center">
                     <span class="text-white flex flex-col items-start">
                         <span class="font-semibold text-white">Guest Drummer #3</span>
-                        <span class="text-red-400 text-base">Adrian Bent</span>
+                        <span class="text-red-400 text-base text-wrap break-words">Adrian Bent</span>
                     </span>
                     <!-- Icon for Interactivity -->
                     <svg class="w-5 h-5 text-red-500 flex-shrink-0 ml-2" fill="none" stroke="currentColor"
@@ -316,17 +346,18 @@
                 </div>
             </div>
 
-            <!-- Guest Drummer #4 (TIME REMAINS 9:30 p.m. but now has only 10 minutes) -->
+            <!-- Guest Drummer #4 (RESPONSIVENESS: flex-shrink-0 + flex-1) -->
             <div tabindex="0"
                 onclick="showProfile('Larnell Lewis', 'A Grammy Award-winning drummer, composer, and educator, best known for his work with Snarky Puppy. His fusion of jazz and complex rhythms is truly inspiring.', 'Images/Larnell Lewis.jpg')"
                 class="schedule-item schedule-item-even reveal flex justify-between items-center p-5 rounded-xl shadow-lg border-l-4 border-red-600 transition-all duration-300 ease-in-out hover:scale-[1.01] cursor-pointer">
-                <span class="text-xl font-extrabold w-1/4 text-red-400">9:30 p.m.</span>
-                <!-- Interactive content wrapper -->
-                <div class="w-3/4 flex justify-between items-center">
+                <!-- Time: takes only necessary space -->
+                <span class="text-xl font-extrabold flex-shrink-0 mr-4 text-red-400">9:30 p.m.</span>
+                <!-- Content: takes remaining space and ensures internal wrapping -->
+                <div class="flex-1 min-w-0 flex justify-between items-center">
                     <span class="text-white flex flex-col items-start">
                         <!-- Added 10 min note -->
                         <span class="font-semibold text-white">Guest Drummer #4</span>
-                        <span class="text-red-400 text-base">Larnell Lewis</span>
+                        <span class="text-red-400 text-base text-wrap break-words">Larnell Lewis</span>
                     </span>
                     <!-- Icon for Interactivity -->
                     <svg class="w-5 h-5 text-red-500 flex-shrink-0 ml-2" fill="none" stroke="currentColor"
@@ -336,18 +367,18 @@
                 </div>
             </div>
 
-            <!-- GUEST DRUMMER #5 & SCHOLARSHIP PRESENTATION (TIME SHIFTED to 9:40 p.m. and compressed to 5 min) -->
+            <!-- GUEST DRUMMER #5 & SCHOLARSHIP PRESENTATION (RESPONSIVENESS: flex-shrink-0 + flex-1) -->
             <div tabindex="0"
                 onclick="showProfile('Roshane Wright', 'An exceptionally talented and versatile drummer known for his dynamic style and deep pocket. He has quickly become one of the most sought-after musicians in the gospel and R&B circuits. Roshane will perform a short feature immediately before the Scholarship Recipients Presentation.', 'Images/Roshane Wright.jpeg')"
                 class="schedule-item reveal flex justify-between items-center p-5 rounded-xl shadow-lg border-l-4 border-red-500 bg-white/5 transition-all duration-300 ease-in-out hover:scale-[1.01] cursor-pointer">
-                <!-- NEW TIME -->
-                <span class="text-xl font-extrabold w-1/4 text-red-400">9:40 p.m.</span>
-                <!-- Interactive content wrapper -->
-                <div class="w-3/4 flex justify-between items-center">
+                <!-- Time: takes only necessary space -->
+                <span class="text-xl font-extrabold flex-shrink-0 mr-4 text-red-400">9:40 p.m.</span>
+                <!-- Content: takes remaining space and ensures internal wrapping -->
+                <div class="flex-1 min-w-0 flex justify-between items-center">
                     <span class="text-white flex flex-col items-start space-y-1">
                         <!-- Updated title to reflect compression -->
                         <span class="font-bold text-white text-lg">Guest Drummer #5 & Scholarship</span>
-                        <span class="text-red-400 text-base">Roshane Wright</span>
+                        <span class="text-red-400 text-base text-wrap break-words">Roshane Wright</span>
                     </span>
                     <!-- Icon for Interactivity -->
                     <svg class="w-5 h-5 text-red-500 flex-shrink-0 ml-2" fill="none" stroke="currentColor"
@@ -357,33 +388,36 @@
                 </div>
             </div>
 
-            <!-- Praise Break (NEW START TIME: 9:45 p.m.) -->
+            <!-- Praise Break (STATIC - RESPONSIVENESS: flex-shrink-0 + flex-1) -->
             <div tabindex="0"
-                class="schedule-item reveal flex justify-between items-center p-5 rounded-xl shadow-lg border-l-4 border-red-600 bg-red-800/40 transition-all duration-300 ease-in-out hover:scale-[1.01] cursor-pointer">
-                <span class="text-xl font-extrabold w-1/4 text-red-400">9:45 p.m.</span>
-                <span class="w-3/4 text-white font-extrabold text-xl tracking-wider">Praise Break</span>
+                class="schedule-item schedule-item-even reveal flex justify-between items-center p-5 rounded-xl shadow-lg border-l-4 border-red-600 transition-all duration-300 ease-in-out hover:scale-[1.01] cursor-pointer">
+                <!-- Time: takes only necessary space -->
+                <span class="text-xl font-extrabold flex-shrink-0 mr-4 text-red-400">9:45 p.m.</span>
+                <!-- Content: takes remaining space and ensures internal wrapping -->
+                <span class="flex-1 min-w-0 text-white font-extrabold text-xl tracking-wider">Praise Break</span>
             </div>
 
-
-            <!-- Closing Prayer (STATIC - NEW START TIME: 9:55 p.m.) -->
-            <!-- Closing Prayer (Interactive - Pastor Dwayne Blair) -->
+            <!-- Closing Prayer (Interactive - Pastor Dwayne Blair) - RESPONSIVENESS: flex-shrink-0 + flex-1) -->
             <div tabindex="0" onclick="showProfile(
                     'Pastor Dwayne Blair',
                     'Pastor Dwayne Blair has been married to his wife, Patricia, for over 20 years and together they have three children. A lifelong basketball fan and coach, Dwayne brings the same passion and teamwork to his faith. <br><br>He is a Certified Credit Professional and licensed insurance advisor with over two decades of ministry service. In 2023, he was ordained as a Youth Pastor at the Church of God Sabbath Keeping Ministries and continues to mentor and guide young people through the Redeemed Youth Ministry in the GTA.',
                     'Images/Dwayne.jpeg'
                 )"
-                class="text-center mt-6 p-4 bg-red-800/40 rounded-lg shadow-lg reveal cursor-pointer hover:scale-[1.01] transition-transform duration-300 border-l-4 border-red-600 flex items-center justify-center space-x-3">
-            
-                <div>
-                    <p class="text-2xl font-bold text-red-400">Closing Prayer</p>
-                    <p class="text-base text-gray-300 pt-1 font-semibold">Pastor Dwayne Blair</p>
+                class="schedule-item reveal flex justify-between items-center p-5 rounded-xl shadow-lg border-l-4 border-red-600 bg-white/5 transition-all duration-300 ease-in-out hover:scale-[1.01] cursor-pointer">
+                <!-- Time: adjusted to 9:55 p.m. and takes only necessary space -->
+                <span class="text-xl font-extrabold flex-shrink-0 mr-4 text-red-400">9:55 p.m.</span>
+                <!-- Content: takes remaining space and ensures internal wrapping -->
+                <div class="flex-1 min-w-0 flex justify-between items-center">
+                    <span class="text-white flex flex-col items-start">
+                        <span class="font-semibold text-white">Closing Prayer</span>
+                        <span class="text-red-400 text-base text-wrap break-words">Pastor Dwayne Blair</span>
+                    </span>
+                    <!-- Icon for Interactivity -->
+                    <svg class="w-5 h-5 text-red-500 flex-shrink-0 ml-2" fill="none" stroke="currentColor"
+                        viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                    </svg>
                 </div>
-            
-                <!-- White Arrow Icon -->
-                <svg class="w-5 h-5 text-white flex-shrink-0 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"
-                    xmlns="http://www.w3.org/2000/svg">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
-                </svg>
             </div>
 
 
@@ -405,7 +439,8 @@
                 onerror="this.onerror=null; this.src='https://placehold.co/128x128/EF4444/FFFFFF?text=Photo';"
                 class="rounded-lg mx-auto mb-4 border-2 border-yellow-400">
             <h3 id="modalName" class="text-3xl font-extrabold text-yellow-400 text-center mb-3"></h3>
-            <p id="modalDetail" class="text-gray-300 text-center mb-6 text-base"></p>
+            <!-- Removed text-center and mb-6, now styled by CSS for scrolling/alignment -->
+            <p id="modalDetail" class="text-gray-300 text-base"></p>
             <button onclick="closeModal()"
                 class="w-full py-3 bg-red-600 text-white font-bold rounded-lg hover:bg-red-700 transition">Close</button>
         </div>
@@ -443,40 +478,22 @@
         reveals.forEach(el => observer.observe(el));
 
         // ========== MODAL FUNCTIONS ========== //
-        // function showProfile(name, detail, imageUrl) {
-        //     document.getElementById('modalName').textContent = name;
-        //     document.getElementById('modalDetail').textContent = detail;
-        //     // Set image source and provide a dynamic placeholder fallback
-        //     document.getElementById('modalImage').src = imageUrl;
-        //     document.getElementById('modalImage').onerror = function () {
-        //         this.onerror = null; // Prevent infinite loop if placeholder fails
-        //         this.src = `https://placehold.co/128x128/EF4444/FFFFFF?text=${name.split(' ')[0]}+Photo`;
-        //     };
-
-        //     document.getElementById('drummerModal').classList.remove('hidden');
-        //     document.getElementById('drummerModal').querySelector('button').focus();
-        // }
-
-        // function closeModal() {
-        //     document.getElementById('drummerModal').classList.add('hidden');
-        // }
-
         function showProfile(name, detail, imageUrl) {
-                document.getElementById('modalName').textContent = name;
-                document.getElementById('modalDetail').innerHTML = detail; // <-- use innerHTML
-                document.getElementById('modalImage').src = imageUrl;
-                document.getElementById('modalImage').onerror = function () {
-                    this.onerror = null;
-                    this.src = `https://placehold.co/128x128/EF4444/FFFFFF?text=${name.split(' ')[0]}+Photo`;
-                };
+            document.getElementById('modalName').textContent = name;
+            document.getElementById('modalDetail').innerHTML = detail; // <-- use innerHTML
+            document.getElementById('modalImage').src = imageUrl;
+            document.getElementById('modalImage').onerror = function () {
+                this.onerror = null;
+                this.src = `https://placehold.co/128x128/EF4444/FFFFFF?text=${name.split(' ')[0]}+Photo`;
+            };
 
-                document.getElementById('drummerModal').classList.remove('hidden');
-                document.getElementById('drummerModal').querySelector('button').focus();
-            }
+            document.getElementById('drummerModal').classList.remove('hidden');
+            document.getElementById('drummerModal').querySelector('button').focus();
+        }
 
-            function closeModal() {
-                   document.getElementById('drummerModal').classList.add('hidden');
-            }
+        function closeModal() {
+            document.getElementById('drummerModal').classList.add('hidden');
+        }
 
 
         // ESC key closes modal
